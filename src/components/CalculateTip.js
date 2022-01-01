@@ -2,28 +2,31 @@ import { logDOM } from "@testing-library/react";
 import React from "react";
 import "../styles/CalculateTip.scss";
 
+let tips;
 class CalculateTip extends React.Component {
+  componentDidMount() {
+    tips = document.querySelectorAll(".tips__tip");
+  }
+
+  getCustomTip(e) {
+    return e.target.value === "" ? 0 : e.target.value;
+  }
+
+  removeActiveClass() {
+    tips.forEach((t) => {
+      t.classList.remove("active");
+    });
+  }
+
   state = {
     tips: [
-      { name: 5, value: 5 },
-      { name: 10, value: 10 },
-      { name: 15, value: 15 },
-      { name: 25, value: 25 },
-      { name: 50, value: 50 },
-      { name: "custom", value: 0 },
+      { value: 5 },
+      { value: 10 },
+      { value: 15 },
+      { value: 25 },
+      { value: 50 },
     ],
-  };
-
-  showRadio = () => {
-    setTimeout(() => {
-      document.querySelectorAll("[name=tip]").forEach((t) => {
-        if (t.checked) {
-          t.parentElement.classList.add("active");
-        } else {
-          t.parentElement.classList.remove("active");
-        }
-      });
-    }, 10);
+    tipValue: 0,
   };
 
   render() {
@@ -39,29 +42,44 @@ class CalculateTip extends React.Component {
           </div>
         </div>
         <div className="tips">
-          <h2 className="tips__label">Select Tip %</h2>
+          {/* <h2 className="tips__header">Select Tip %</h2> */}
+          <h2 className="tips__header">{this.state.tipValue}</h2>
           <div className="tips--container">
             {this.state.tips.map((tip) => {
               return (
-                <label
-                  key={tip.name}
+                <span
+                  key={tip.value}
                   className="tips__tip"
-                  htmlFor={tip.name}
-                  onClick={this.showRadio}
+                  onClick={(e) => {
+                    this.removeActiveClass();
+                    e.target.classList.add("active");
+
+                    this.setState({
+                      tipValue: tip.value,
+                    });
+                  }}
                 >
                   {tip.value}%
-                  <input
-                    type="radio"
-                    name="tip"
-                    id={tip.name}
-                    value={tip.value}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                    }}
-                  />
-                </label>
+                </span>
               );
             })}
+
+            <input
+              className="tips__tip custom"
+              type="number"
+              name="custom"
+              id="custom"
+              placeholder="Custom"
+              onClick={(e) => {
+                this.removeActiveClass();
+                e.target.classList.add("active");
+
+                this.setState({ tipValue: this.getCustomTip(e) });
+              }}
+              onChange={(e) => {
+                this.setState({ tipValue: this.getCustomTip(e) });
+              }}
+            />
           </div>
         </div>
       </section>

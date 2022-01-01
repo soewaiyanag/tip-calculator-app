@@ -21,6 +21,24 @@
 
     &.active {
       background-color: var(--cyan);
+      color: black;
+    }
+
+    &.custom {
+      position: relative;
+      color: var(--cyan-dark-2);
+      background-color: var(--cyan-light-1);
+      outline: none;
+      border: none;
+      text-align: center;
+      font-size: 1.075rem;
+      font-weight: 700;
+      border-radius: 0.2rem;
+      cursor: pointer;
+      &.active {
+        color: var(--cyan-dark-3);
+        outline: var(--cyan) 2px solid;
+      }
     }
   }
 }
