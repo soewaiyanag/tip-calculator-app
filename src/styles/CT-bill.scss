@@ -1,0 +1,65 @@
+// REMOVE ARROWS
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+label[for="bill"] {
+  display: block;
+}
+
+.bill {
+  --space: 10px;
+  #bill {
+    text-align: right;
+    padding-right: var(--space);
+  }
+
+  &__label {
+    font-weight: 600;
+  }
+
+  &__input {
+    margin-top: 0.5rem;
+    position: relative;
+    height: 40px;
+    width: 100%;
+    max-width: var(--mw);
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: var(--cyan-light-1);
+
+    input {
+      height: 100%;
+      width: 100%;
+      font-size: 1.4rem;
+      background: transparent;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      font-family: "Space Mono", monospace;
+
+      color: var(--cyan-dark);
+      font-weight: 700;
+
+      transition: outline ease-in 100ms;
+
+      &:focus {
+        outline: var(--cyan) 2px solid;
+      }
+    }
+
+    span {
+      position: absolute;
+      left: var(--space);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

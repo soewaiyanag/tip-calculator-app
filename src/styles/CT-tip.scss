@@ -1,0 +1,26 @@
+.tips {
+  input[type="radio"] {
+    display: none;
+  }
+  &--container {
+    width: 100%;
+    max-width: var(--mw);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    gap: 2rem;
+  }
+  &__tip {
+    padding: 0.4rem 0;
+    background-color: var(--cyan-dark-3);
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    user-select: none;
+
+    &.active {
+      background-color: var(--cyan);
+    }
+  }
+}
