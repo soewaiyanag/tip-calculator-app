@@ -1,6 +1,7 @@
-import { logDOM } from "@testing-library/react";
 import React from "react";
 import "../styles/CalculateTip.scss";
+import iconPerson from "../images/icon-person.svg";
+import iconDollar from "../images/icon-dollar.svg";
 
 let tips;
 class CalculateTip extends React.Component {
@@ -9,23 +10,22 @@ class CalculateTip extends React.Component {
   }
 
   getCustomTip(e) {
-    return e.target.value === "" ? 0 : e.target.value;
+    let value = Number(e.target.value === "" ? 0 : e.target.value);
+    return value;
   }
 
   removeActiveClass() {
     tips.forEach((t) => {
-      t.classList.remove("active");
+      if (t.classList.contains("active")) {
+        t.classList.remove("active");
+        return;
+      }
     });
   }
 
+  tips = [5, 10, 15, 25, 50];
+
   state = {
-    tips: [
-      { value: 5 },
-      { value: 10 },
-      { value: 15 },
-      { value: 25 },
-      { value: 50 },
-    ],
     tipValue: 0,
   };
 
@@ -38,28 +38,27 @@ class CalculateTip extends React.Component {
           </label>
           <div className="bill__input">
             <input id="bill" placeholder="0" type="number" />
-            <span>$</span>
+            <img src={iconDollar} alt="icon" />
           </div>
         </div>
         <div className="tips">
-          {/* <h2 className="tips__header">Select Tip %</h2> */}
-          <h2 className="tips__header">{this.state.tipValue}</h2>
+          <label className="tips__label">Select Tip %</label>
           <div className="tips--container">
-            {this.state.tips.map((tip) => {
+            {this.tips.map((tip) => {
               return (
                 <span
-                  key={tip.value}
+                  key={tip}
                   className="tips__tip"
                   onClick={(e) => {
                     this.removeActiveClass();
                     e.target.classList.add("active");
 
                     this.setState({
-                      tipValue: tip.value,
+                      tipValue: tip,
                     });
                   }}
                 >
-                  {tip.value}%
+                  {tip}%
                 </span>
               );
             })}
@@ -70,6 +69,8 @@ class CalculateTip extends React.Component {
               name="custom"
               id="custom"
               placeholder="Custom"
+              min="10"
+              max="100"
               onClick={(e) => {
                 this.removeActiveClass();
                 e.target.classList.add("active");
@@ -80,6 +81,15 @@ class CalculateTip extends React.Component {
                 this.setState({ tipValue: this.getCustomTip(e) });
               }}
             />
+          </div>
+        </div>
+        <div className="numberOfPeople">
+          <label htmlFor="numberOfPeople" className="numberOfPeople__label">
+            Number of People
+          </label>
+          <div className="numberOfPeople__input">
+            <input id="numberOfPeople" placeholder="0" type="number" />
+            <img src={iconPerson} alt="icon" />
           </div>
         </div>
       </section>

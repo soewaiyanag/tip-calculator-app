@@ -1,2 +1,112 @@
-@use "./CT-bill.scss";
-@use "./CT-tip.scss";
+// REMOVE ARROWS
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+label[for="bill"] {
+  display: block;
+}
+
+label {
+  font-weight: 600;
+}
+
+.bill,
+.numberOfPeople {
+  --space: 10px;
+
+  input[type="number"] {
+    text-align: right;
+    padding-right: var(--space);
+  }
+
+  &__input {
+    margin-top: 0.5rem;
+    position: relative;
+    height: 40px;
+    width: 100%;
+    max-width: var(--mw);
+    font-size: 1.5rem;
+    border-radius: 5px;
+    background-color: var(--cyan-light-1);
+
+    input {
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+      font-size: 1.4rem;
+      background: transparent;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      font-family: "Space Mono", monospace;
+
+      color: var(--cyan-dark);
+      font-weight: 700;
+
+      &:focus {
+        outline: var(--cyan) 2px solid;
+      }
+    }
+
+    img[alt="icon"] {
+      pointer-events: none;
+      position: absolute;
+      left: var(--space);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.tips {
+  input[type="radio"] {
+    display: none;
+  }
+  &--container {
+    width: 100%;
+    max-width: var(--mw);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+    gap: 2rem;
+  }
+  &__tip {
+    padding: 0.4rem 0;
+    background-color: var(--cyan-dark-3);
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    user-select: none;
+
+    &.active {
+      background-color: var(--cyan);
+      color: black;
+    }
+
+    &.custom {
+      position: relative;
+      color: var(--cyan-dark-2);
+      background-color: var(--cyan-light-1);
+      outline: none;
+      border: none;
+      text-align: center;
+      font-size: 1.075rem;
+      font-weight: 700;
+      border-radius: 0.2rem;
+      cursor: pointer;
+      &.active {
+        color: var(--cyan-dark-3);
+        outline: var(--cyan) 2px solid;
+      }
+    }
+  }
+}
