@@ -5,7 +5,14 @@ import CalculateTip from "./components/CalculateTip";
 function App() {
   return (
     <div className="App">
-      <CalculateTip />
+      <h2 className="App__header">
+        spli
+        <br />
+        tter
+      </h2>
+      <div className="App__card">
+        <CalculateTip />
+      </div>
     </div>
   );
 }

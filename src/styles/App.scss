@@ -1,0 +1,16 @@
+.App {
+  &__header {
+    margin-top: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 8px;
+    color: var(--cyan-dark-3);
+    font-weight: 700;
+  }
+  &__card {
+    background-color: white;
+    margin: 2em;
+    padding: 2em;
+    border-radius: 1.5rem;
+  }
+}

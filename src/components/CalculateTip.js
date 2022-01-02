@@ -31,7 +31,7 @@ class CalculateTip extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className="calculateTip">
         <div className="bill">
           <label htmlFor="bill" className="bill__label">
             Bill
