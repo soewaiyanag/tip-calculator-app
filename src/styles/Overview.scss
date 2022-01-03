@@ -1,0 +1,17 @@
+.Overview {
+  padding: 1.5rem;
+  background-color: var(--cyan-dark-3);
+  border-radius: 0.65rem;
+  .label {
+    color: var(--cyan-light-1);
+    &::after {
+      display: block;
+      content: "/ person";
+      color: var(--cyan-light-2);
+      font-size: 1rem;
+    }
+  }
+  .value {
+    color: var(--cyan);
+  }
+}

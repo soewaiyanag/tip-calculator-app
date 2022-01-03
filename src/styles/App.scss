@@ -12,5 +12,10 @@
     margin: 2em;
     padding: 2em;
     border-radius: 1.5rem;
+    display: grid;
+    gap: 2rem;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 }

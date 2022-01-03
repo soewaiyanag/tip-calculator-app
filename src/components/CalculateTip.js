@@ -9,7 +9,7 @@ class CalculateTip extends React.Component {
     tips = document.querySelectorAll(".tips__tip");
   }
 
-  getCustomTip(e) {
+  getInputNumber(e) {
     let value = Number(e.target.value === "" ? 0 : e.target.value);
     return value;
   }
@@ -25,10 +25,6 @@ class CalculateTip extends React.Component {
 
   tips = [5, 10, 15, 25, 50];
 
-  state = {
-    tipValue: 0,
-  };
-
   render() {
     return (
       <section className="calculateTip">
@@ -37,12 +33,20 @@ class CalculateTip extends React.Component {
             Bill
           </label>
           <div className="bill__input">
-            <input id="bill" placeholder="0" type="number" />
+            <input
+              id="bill"
+              placeholder="0"
+              type="number"
+              onChange={(e) => {
+                this.props.updateBill(this.getInputNumber(e));
+              }}
+            />
             <img src={iconDollar} alt="icon" />
           </div>
         </div>
         <div className="tips">
-          <label className="tips__label">Select Tip %</label>
+          <label className="tips__label"></label>
+          {/* <label className="tips__label">Select Tip %</label> */}
           <div className="tips--container">
             {this.tips.map((tip) => {
               return (
@@ -52,10 +56,7 @@ class CalculateTip extends React.Component {
                   onClick={(e) => {
                     this.removeActiveClass();
                     e.target.classList.add("active");
-
-                    this.setState({
-                      tipValue: tip,
-                    });
+                    this.props.updateTip(tip);
                   }}
                 >
                   {tip}%
@@ -74,11 +75,10 @@ class CalculateTip extends React.Component {
               onClick={(e) => {
                 this.removeActiveClass();
                 e.target.classList.add("active");
-
-                this.setState({ tipValue: this.getCustomTip(e) });
+                this.props.updateTip(this.getInputNumber(e));
               }}
               onChange={(e) => {
-                this.setState({ tipValue: this.getCustomTip(e) });
+                this.props.updateTip(this.getInputNumber(e));
               }}
             />
           </div>
@@ -88,7 +88,14 @@ class CalculateTip extends React.Component {
             Number of People
           </label>
           <div className="numberOfPeople__input">
-            <input id="numberOfPeople" placeholder="0" type="number" />
+            <input
+              id="numberOfPeople"
+              placeholder="0"
+              type="number"
+              onChange={(e) => {
+                this.props.updateNumberOfPeople(this.getInputNumber(e));
+              }}
+            />
             <img src={iconPerson} alt="icon" />
           </div>
         </div>
