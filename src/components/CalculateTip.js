@@ -3,19 +3,32 @@ import "../styles/CalculateTip.scss";
 import iconPerson from "../images/icon-person.svg";
 import iconDollar from "../images/icon-dollar.svg";
 
-let tips;
+let tipSelectors;
 class CalculateTip extends React.Component {
+  tips = [5, 10, 15, 25, 50];
+
   componentDidMount() {
-    tips = document.querySelectorAll(".tips__tip");
+    tipSelectors = document.querySelectorAll(".tips__tip");
   }
 
   getInputNumber(e) {
-    let value = Number(!e.target.value ? 1 : e.target.value);
+    let value = Number(e.target.value);
+
     return value;
   }
 
+  showError(value, parentClassName) {
+    let errorParent = document.querySelector(parentClassName);
+    if (value === 0) {
+      errorParent.classList.add("show-error");
+      return;
+    } else {
+      errorParent.classList.remove("show-error");
+    }
+  }
+
   removeActiveClass() {
-    tips.forEach((t) => {
+    tipSelectors.forEach((t) => {
       if (t.classList.contains("active")) {
         t.classList.remove("active");
         return;
@@ -23,21 +36,27 @@ class CalculateTip extends React.Component {
     });
   }
 
-  tips = [5, 10, 15, 25, 50];
-
   render() {
     return (
       <section className="calculateTip">
         <div className="bill">
-          <label htmlFor="bill" className="bill__label">
-            Bill
-          </label>
+          <div className="row">
+            <label htmlFor="bill" className="bill__label">
+              Bill
+            </label>
+            <span className="error">Can't be zero</span>
+          </div>
           <div className="bill__input">
             <input
               id="bill"
+              className="error"
               placeholder="0"
               type="number"
+              value={this.props.data.bill === 0 ? "" : this.props.data.bill}
               onChange={(e) => {
+                let value = this.getInputNumber(e);
+                this.showError(value, ".bill");
+
                 this.props.updateBill(this.getInputNumber(e));
               }}
             />
@@ -45,8 +64,7 @@ class CalculateTip extends React.Component {
           </div>
         </div>
         <div className="tips">
-          <label className="tips__label"></label>
-          {/* <label className="tips__label">Select Tip %</label> */}
+          <label className="tips__label">Select Tip %</label>
           <div className="tips--container">
             {this.tips.map((tip) => {
               return (
@@ -84,15 +102,26 @@ class CalculateTip extends React.Component {
           </div>
         </div>
         <div className="numberOfPeople">
-          <label htmlFor="numberOfPeople" className="numberOfPeople__label">
-            Number of People
-          </label>
+          <div className="row">
+            <label htmlFor="numberOfPeople" className="numberOfPeople__label">
+              Number of People
+            </label>
+            <span className="error">Can't be zero</span>
+          </div>
           <div className="numberOfPeople__input">
             <input
               id="numberOfPeople"
+              className="error"
               placeholder="0"
               type="number"
+              value={
+                this.props.data.numberOfPeople === 0
+                  ? ""
+                  : this.props.data.numberOfPeople
+              }
               onChange={(e) => {
+                let value = this.getInputNumber(e);
+                this.showError(value, ".numberOfPeople");
                 this.props.updateNumberOfPeople(this.getInputNumber(e));
               }}
             />
@@ -104,4 +133,4 @@ class CalculateTip extends React.Component {
   }
 }
 
-export default CalculateTip;
+export { CalculateTip, tipSelectors };

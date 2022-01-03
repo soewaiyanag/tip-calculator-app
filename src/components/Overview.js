@@ -15,7 +15,9 @@ class Overview extends React.Component {
             <h1 className="value">${this.props.total()}</h1>
           </div>
         </div>
-        <button id="reset">RESET</button>
+        <button id="reset" onClick={this.props.reset}>
+          RESET
+        </button>
       </section>
     );
   }
