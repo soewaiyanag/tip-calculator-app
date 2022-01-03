@@ -10,7 +10,7 @@ class CalculateTip extends React.Component {
   }
 
   getInputNumber(e) {
-    let value = Number(e.target.value === "" ? 0 : e.target.value);
+    let value = Number(!e.target.value ? 1 : e.target.value);
     return value;
   }
 

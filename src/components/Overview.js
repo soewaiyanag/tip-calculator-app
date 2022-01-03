@@ -6,16 +6,16 @@ class Overview extends React.Component {
     return (
       <section className="Overview">
         <div>
-          <div>
+          <div className="row">
             <h3 className="label">Tip Amount</h3>
-            <h1 className="value">${this.props.value}</h1>
+            <h1 className="value">${this.props.tipAmount()}</h1>
           </div>
-          <div>
+          <div className="row">
             <h3 className="label">Total</h3>
-            <h1 className="value">${this.props.value}</h1>
+            <h1 className="value">${this.props.total()}</h1>
           </div>
         </div>
-        <button className="reset-btn">RESET</button>
+        <button id="reset">RESET</button>
       </section>
     );
   }

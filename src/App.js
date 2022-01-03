@@ -28,6 +28,26 @@ class App extends React.Component {
     });
   };
 
+  tipAmount = () => {
+    let bill = Number(this.state.bill);
+    let tipValue = Number(this.state.tipValue);
+    let numberOfPeople = Number(this.state.numberOfPeople);
+
+    let value = (bill * (tipValue / 100)) / numberOfPeople;
+
+    return value.toFixed(2);
+  };
+
+  total = () => {
+    let bill = Number(this.state.bill);
+    let tipValue = Number(this.state.tipValue);
+    let numberOfPeople = Number(this.state.numberOfPeople);
+
+    let value = (bill * (tipValue / 100 + 1)) / numberOfPeople;
+
+    return value.toFixed(2);
+  };
+
   render() {
     return (
       <div className="App">
@@ -42,7 +62,7 @@ class App extends React.Component {
             updateBill={this.updateBill}
             updateNumberOfPeople={this.updateNumberOfPeople}
           />
-          <Overview value={1} />
+          <Overview tipAmount={this.tipAmount} total={this.total} />
         </div>
       </div>
     );
