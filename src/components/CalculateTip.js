@@ -12,9 +12,7 @@ class CalculateTip extends React.Component {
   }
 
   getInputNumber(e) {
-    let value = Number(e.target.value);
-
-    return value;
+    return Number(e.target.value);
   }
 
   showError(value, parentClassName) {
@@ -56,8 +54,7 @@ class CalculateTip extends React.Component {
               onChange={(e) => {
                 let value = this.getInputNumber(e);
                 this.showError(value, ".bill");
-
-                this.props.updateBill(this.getInputNumber(e));
+                this.props.updateBill(value);
               }}
             />
             <img src={iconDollar} alt="icon" />
@@ -122,7 +119,7 @@ class CalculateTip extends React.Component {
               onChange={(e) => {
                 let value = this.getInputNumber(e);
                 this.showError(value, ".numberOfPeople");
-                this.props.updateNumberOfPeople(this.getInputNumber(e));
+                this.props.updateNumberOfPeople(value);
               }}
             />
             <img src={iconPerson} alt="icon" />

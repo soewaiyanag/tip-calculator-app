@@ -38,8 +38,13 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 100ms ease-out;
+
     &:hover {
       background-color: var(--cyan-light-2);
+    }
+    &.disable {
+      background-color: var(--cyan-dark-2);
+      cursor: not-allowed;
     }
   }
 }
