@@ -1,4 +1,4 @@
 # Tip Calculator
 ## challenge from frontendmentor.io
 
-#[Preview](https://inspiring-golick-c9daf6.netlify.app/)
+[#Preview](https://vibrant-pasteur-562bda.netlify.app/)
