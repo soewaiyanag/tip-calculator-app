@@ -50,7 +50,7 @@ const CalculateTip = (props) => {
             className="error"
             placeholder="0"
             type="number"
-            value={props.data.bill === 0 ? "" : props.data.bill}
+            value={props.bill === 0 ? "" : props.bill}
             onChange={(e) => {
               let value = getInputNumber(e);
               showError(value, ".bill");
@@ -111,9 +111,7 @@ const CalculateTip = (props) => {
             className="error"
             placeholder="0"
             type="number"
-            value={
-              props.data.numberOfPeople === 0 ? "" : props.data.numberOfPeople
-            }
+            value={props.numberOfPeople === 0 ? "" : props.numberOfPeople}
             onChange={(e) => {
               let value = getInputNumber(e);
               showError(value, ".numberOfPeople");
