@@ -36,7 +36,7 @@ const CalculateTip = (props) => {
   };
 
   return (
-    <section className="calculateTip">
+    <div className="calculateTip">
       <div className="bill">
         <div className="row">
           <label htmlFor="bill" className="bill__label">
@@ -121,7 +121,7 @@ const CalculateTip = (props) => {
           <img src={iconPerson} alt="icon" />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

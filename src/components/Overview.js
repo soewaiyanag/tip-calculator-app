@@ -5,7 +5,7 @@ const Overview = (props) => {
   const tip = Number(props.tipAmount());
   const total = Number(props.total());
   return (
-    <section className="Overview">
+    <div className="Overview">
       <div>
         <div className="row">
           <h3 className="label">Tip Amount</h3>
@@ -23,7 +23,7 @@ const Overview = (props) => {
       >
         RESET
       </button>
-    </section>
+    </div>
   );
 };
 
