@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import "../styles/CalculateTip.scss";
 import iconPerson from "../images/icon-person.svg";
-import iconDollar from "../images/icon-dollar.svg";
+import Bill from "features/bill/Bill";
+import getInputNumber from "scripts/getInputNumber";
 
 let tipSelectors;
 
@@ -11,10 +12,6 @@ const CalculateTip = (props) => {
   }, []);
 
   const tips = [5, 10, 15, 25, 50];
-
-  const getInputNumber = (e) => {
-    return Number(e.target.value);
-  };
 
   const showError = (value, parentClassName) => {
     let errorParent = document.querySelector(parentClassName);
@@ -37,29 +34,7 @@ const CalculateTip = (props) => {
 
   return (
     <div className="calculateTip">
-      <div className="bill">
-        <div className="row">
-          <label htmlFor="bill" className="bill__label">
-            Bill
-          </label>
-          <span className="error">Can't be zero</span>
-        </div>
-        <div className="bill__input">
-          <input
-            id="bill"
-            className="error"
-            placeholder="0"
-            type="number"
-            value={props.bill === 0 ? "" : props.bill}
-            onChange={(e) => {
-              let value = getInputNumber(e);
-              showError(value, ".bill");
-              props.updateBill(value);
-            }}
-          />
-          <img src={iconDollar} alt="icon" />
-        </div>
-      </div>
+      <Bill />
       <div className="tips">
         <label className="tips__label">Select Tip %</label>
         <div className="tips--container">
