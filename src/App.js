@@ -1,8 +1,6 @@
-"use stript";
-
 import React, { useState } from "react";
 import "./styles/App.scss";
-import { CalculateTip, tipSelectors } from "./components/CalculateTip";
+import { CalculateTip } from "./components/CalculateTip";
 import Overview from "./components/Overview";
 
 const App = () => {
@@ -14,12 +12,6 @@ const App = () => {
     setBill(0);
     setTipValue(0);
     setNumberOfPeople(0);
-    tipSelectors.forEach((t) => {
-      if (t.classList.contains("active")) {
-        t.classList.remove("active");
-        return;
-      }
-    });
   };
 
   const tipAmount = () => {

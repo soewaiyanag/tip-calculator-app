@@ -4,7 +4,7 @@ import { change } from "./billSlice";
 import getInputNumber from "scripts/getInputNumber";
 
 const Bill = () => {
-  const billValue = useSelector((state) => state.bill.value);
+  const value = useSelector((state) => state.bill.value);
   const dispatch = useDispatch();
 
   return (
@@ -21,7 +21,7 @@ const Bill = () => {
           className="error"
           placeholder="0"
           type="number"
-          value={billValue === 0 ? "" : billValue}
+          value={value === 0 ? "" : value}
           onChange={(e) => {
             let value = getInputNumber(e);
             // showError(value, ".bill");

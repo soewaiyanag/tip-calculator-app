@@ -1,30 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import "../styles/CalculateTip.scss";
 import iconPerson from "../images/icon-person.svg";
 import Bill from "features/bill/Bill";
 import getInputNumber from "scripts/getInputNumber";
 
-let tipSelectors;
-
 const CalculateTip = (props) => {
-  useEffect(() => {
-    tipSelectors = document.querySelectorAll(".tips__tip");
-  }, []);
+  const tipContainerRef = useRef(null);
 
   const tips = [5, 10, 15, 25, 50];
 
-  const showError = (value, parentClassName) => {
-    let errorParent = document.querySelector(parentClassName);
-    if (value === 0) {
-      errorParent.classList.add("show-error");
-      return;
-    } else {
-      errorParent.classList.remove("show-error");
-    }
-  };
-
   const removeActiveClass = () => {
-    tipSelectors.forEach((t) => {
+    const tipsSelectors = Array.from(tipContainerRef.current.children);
+    tipsSelectors.forEach((t) => {
       if (t.classList.contains("active")) {
         t.classList.remove("active");
         return;
@@ -37,7 +24,7 @@ const CalculateTip = (props) => {
       <Bill />
       <div className="tips">
         <label className="tips__label">Select Tip %</label>
-        <div className="tips--container">
+        <div ref={tipContainerRef} className="tips--container">
           {tips.map((tip) => {
             return (
               <span
@@ -89,7 +76,6 @@ const CalculateTip = (props) => {
             value={props.numberOfPeople === 0 ? "" : props.numberOfPeople}
             onChange={(e) => {
               let value = getInputNumber(e);
-              showError(value, ".numberOfPeople");
               props.updateNumberOfPeople(value);
             }}
           />
@@ -100,4 +86,4 @@ const CalculateTip = (props) => {
   );
 };
 
-export { CalculateTip, tipSelectors };
+export { CalculateTip };
