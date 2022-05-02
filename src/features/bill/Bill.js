@@ -1,7 +1,6 @@
 import dollarIcon from "images/icon-dollar.svg";
 import { useSelector, useDispatch } from "react-redux";
-import { change } from "./billSlice";
-import getInputNumber from "scripts/getInputNumber";
+import { update } from "./billSlice";
 
 const Bill = () => {
   const value = useSelector((state) => state.bill.value);
@@ -23,9 +22,8 @@ const Bill = () => {
           type="number"
           value={value === 0 ? "" : value}
           onChange={(e) => {
-            let value = getInputNumber(e);
-            // showError(value, ".bill");
-            dispatch(change({ value: Number(value) }));
+            let value = parseInt(e.target.value);
+            dispatch(update({ value: Number(value) }));
           }}
         />
         <img src={dollarIcon} alt="icon" />

@@ -58,17 +58,15 @@ label {
 }
 
 .tips {
-  input[type="radio"] {
-    display: none;
-  }
   &--container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
+    // minmax(0, 1fr) to equalize the width of the columns
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
     @media screen and (min-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
   &__tip {
@@ -82,7 +80,7 @@ label {
     cursor: pointer;
     user-select: none;
 
-    &.active {
+    &.active:not(.tips__custom) {
       background-color: var(--cyan);
       color: black;
     }
