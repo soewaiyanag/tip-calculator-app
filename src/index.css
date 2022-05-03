@@ -17,11 +17,3 @@ input[type="number"] {
 body {
   @apply font-spaceMono bg-cyan-light-2;
 }
-
-#root {
-  @apply relative min-h-screen;
-}
-
-.absolute-center {
-  @apply top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-}

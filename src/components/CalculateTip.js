@@ -6,16 +6,6 @@ const CalculateTip = () => {
     <div className="">
       <Bill />
       <Tips />
-
-      <div className="numberOfPeople">
-        <div className="row">
-          <label htmlFor="numberOfPeople" className="numberOfPeople__label">
-            Number of People
-          </label>
-          <span className="error">Can't be zero</span>
-        </div>
-        <div className="numberOfPeople__input"></div>
-      </div>
     </div>
   );
 };
