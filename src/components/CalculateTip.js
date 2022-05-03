@@ -1,4 +1,5 @@
 import Bill from "features/bill/Bill";
+import NumberOfPeople from "features/numberOfPeople/NumberOfPeople";
 import Tips from "features/tips/Tips";
 
 const CalculateTip = () => {
@@ -6,8 +7,9 @@ const CalculateTip = () => {
     <div className="">
       <Bill />
       <Tips />
+      <NumberOfPeople />
     </div>
   );
 };
 
-export { CalculateTip };
+export default CalculateTip;

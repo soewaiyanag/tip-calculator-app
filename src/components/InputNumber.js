@@ -1,15 +1,20 @@
 import clsx from "clsx";
+import camelCase from "lodash.camelcase";
 
-const InputNumber = ({ value, onChange, className, icon }) => {
+const InputNumber = ({ name, value, onChange, className, icon }) => {
+  const id = camelCase(name);
   return (
-    <div className={clsx("input-number", className)}>
-      <input
-        placeholder="0"
-        type="number"
-        value={value === 0 ? "" : value}
-        onChange={onChange}
-      />
-      {icon && <img src={icon} alt="icon" />}
+    <div>
+      <label htmlFor={id}>{name}</label>
+      <div className="relative">
+        <img className="relative z-10" src={icon} alt="icon" />
+        <input
+          className="absolute inset-0"
+          type="number"
+          name={name}
+          id={id}
+        ></input>
+      </div>
     </div>
   );
 };

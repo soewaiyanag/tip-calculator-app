@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { CalculateTip } from "./CalculateTip";
+import CalculateTip from "./CalculateTip";
 import Overview from "./Overview";
 
 const Card = () => {
