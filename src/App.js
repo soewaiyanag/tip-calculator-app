@@ -36,15 +36,17 @@ const App = () => {
   };
 
   return (
-    <div className={clsx("absolute absolute-center space-y-14")}>
+    <div className="absolute absolute-center space-y-14">
       <h1 className="text-center font-semibold text-2xl uppercase tracking-widest">
         spli
         <br />
         tter
       </h1>
       <div
-        className="grid grid-cols-2 gap-4 p-6 max-w-3xl
-                bg-white rounded-lg shadow-lg h-80 min-w-max"
+        className={clsx(
+          "grid grid-cols-2 gap-4 p-6 max-w-3xl",
+          "bg-white rounded-lg shadow-lg h-80 min-w-max"
+        )}
       >
         <CalculateTip />
         <Overview />
