@@ -5,10 +5,13 @@ import personIcon from "images/icon-person.svg";
 
 const NumberOfPeople = () => {
   const value = useSelector((state) => state.numberOfPeople.value);
-  console.log(value);
-  const dispatch = useDispatch();
+  const action = (value) => {
+    return update({ value: value });
+  };
 
-  return <InputNumber name={"Number Of People"} icon={personIcon} />;
+  return (
+    <InputNumber name={"Number Of People"} icon={personIcon} action={action} />
+  );
 };
 
 export default NumberOfPeople;

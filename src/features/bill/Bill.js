@@ -5,9 +5,11 @@ import dollarIcon from "images/icon-dollar.svg";
 
 const Bill = () => {
   const value = useSelector((state) => state.bill.value);
-  const dispatch = useDispatch();
+  const action = (value) => {
+    return update({ value: value });
+  };
 
-  return <InputNumber name={"Bill"} icon={dollarIcon} />;
+  return <InputNumber name={"Bill"} icon={dollarIcon} action={action} />;
 };
 
 export default Bill;
