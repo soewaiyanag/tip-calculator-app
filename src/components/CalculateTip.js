@@ -1,11 +1,9 @@
-import React from "react";
-import "styles/CalculateTip.scss";
 import Bill from "features/bill/Bill";
 import Tips from "features/tips/Tips";
 
 const CalculateTip = () => {
   return (
-    <div className="calculateTip">
+    <div className="">
       <Bill />
       <Tips />
 

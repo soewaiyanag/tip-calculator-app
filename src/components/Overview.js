@@ -1,25 +1,20 @@
 import React from "react";
-import "../styles/Overview.scss";
+import OverviewRow from "./OverviewRow";
 
-const Overview = (props) => {
-  const tip = Number(props.tipAmount());
-  const total = Number(props.total());
+const Overview = () => {
   return (
-    <div className="Overview">
-      <div>
-        <div className="row">
-          <h3 className="label">Tip Amount</h3>
-          <h1 className="value">${tip}</h1>
-        </div>
-        <div className="row">
-          <h3 className="label">Total</h3>
-          <h1 className="value">${total}</h1>
-        </div>
+    <div
+      className="flex flex-col
+              bg-cyan-dark-3 rounded-md p-6"
+    >
+      <div className="space-y-6">
+        <OverviewRow label={"Tip Amount"} />
+        <OverviewRow label={"Total"} />
       </div>
       <button
-        className={tip + total ? null : "disable"}
-        id="reset"
-        onClick={tip + total ? props.reset : null}
+        className="w-full transition-colors bg-cyan
+                font-semibold text-cyan-dark-3 rounded
+                p-2 mt-auto hover:bg-cyan-light-2"
       >
         RESET
       </button>
