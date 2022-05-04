@@ -12,9 +12,7 @@ const Tips = () => {
 
   return (
     <div className="space-y-2">
-      <label className="text-sm font-semibold text-cyan-dark-2">
-        Select Tip %
-      </label>
+      <h1 className="text-sm font-semibold text-cyan-dark-2">Select Tip %</h1>
       <div
         className="grid grid-cols-3 gap-3"
         onChange={(event) => {

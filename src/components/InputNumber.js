@@ -1,19 +1,12 @@
 import clsx from "clsx";
 import camelCase from "lodash.camelcase";
-import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import getInputNumber from "scripts/getInputNumber";
+import onlyInt from "scripts/onlyInt";
 
 const InputNumber = ({ name, value, icon, update }) => {
   const dispatch = useDispatch();
   const id = camelCase(name);
-
-  const keyDownHandler = useCallback((event) => {
-    const key = event.key;
-    if (key === "e" || key === "-" || key === "+") {
-      event.preventDefault();
-    }
-  }, []);
 
   const onChangeHandler = (event) => {
     const inputNumber = getInputNumber(event);
@@ -38,7 +31,7 @@ const InputNumber = ({ name, value, icon, update }) => {
           name={name}
           id={id}
           value={value || ""} // if value is 0, just show placeholder
-          onKeyDown={keyDownHandler}
+          onKeyDown={onlyInt}
           onChange={onChangeHandler}
         />
       </div>
