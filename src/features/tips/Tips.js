@@ -27,8 +27,8 @@ const Tips = () => {
               key={id}
               htmlFor={id}
               className={clsx(
-                "font-semibold transition-colors select-none",
-                "rounded cursor-pointer h-8",
+                "font-semibold transition-colors duration-100",
+                "rounded cursor-pointer select-none h-8",
                 "grid place-items-center",
                 tipValue === tip
                   ? "bg-cyan text-cyan-dark-3"

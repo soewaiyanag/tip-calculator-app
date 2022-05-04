@@ -20,11 +20,12 @@ const CustomTip = () => {
     <div className="relative">
       <input
         className={clsx(
+          "placeholder:font-semibold placeholder:text-cyan-dark-2",
           "absolute inset-0 text-center font-semibold",
-          "placeholder:font-semibold",
-          "bg-cyan-light-1 outline-none",
-          "border-cyan rounded",
-          radioRef.current?.checked && "border-2"
+          "duration-100 transition-all",
+          "bg-cyan-light-1 outline rounded",
+          radioRef.current?.checked ? "outline-2" : "outline-0",
+          customValue ? "outline-cyan" : "outline-red-600"
         )}
         placeholder="Custom"
         type="number"

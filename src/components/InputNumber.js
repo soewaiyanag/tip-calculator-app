@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import camelCase from "lodash.camelcase";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import getInputNumber from "scripts/getInputNumber";
 import onlyInt from "scripts/onlyInt";
 
 const InputNumber = ({ name, value, icon, update }) => {
+  const [isFocus, setIsFocus] = useState(false);
   const dispatch = useDispatch();
   const id = camelCase(name);
 
@@ -18,7 +20,13 @@ const InputNumber = ({ name, value, icon, update }) => {
       <label className="text-sm font-semibold text-cyan-dark-2" htmlFor={id}>
         {name}
       </label>
-      <div className="relative bg-cyan-light-1 rounded p-3">
+      <div
+        className={clsx(
+          "relative bg-cyan-light-1 rounded p-3 duration-100",
+          "outline-cyan outline transition-[outline-width]",
+          isFocus ? "outline-2" : "outline-0"
+        )}
+      >
         <img className="w-2.5" src={icon} alt="icon" />
         <input
           className={clsx(
@@ -33,6 +41,12 @@ const InputNumber = ({ name, value, icon, update }) => {
           value={value || ""} // if value is 0, just show placeholder
           onKeyDown={onlyInt}
           onChange={onChangeHandler}
+          onFocus={() => {
+            setIsFocus(true);
+          }}
+          onBlur={() => {
+            setIsFocus(false);
+          }}
         />
       </div>
     </div>
