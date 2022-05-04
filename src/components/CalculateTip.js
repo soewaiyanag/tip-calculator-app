@@ -4,7 +4,7 @@ import Tips from "features/tips/Tips";
 
 const CalculateTip = () => {
   return (
-    <div className="">
+    <div className="flex flex-col justify-between p-2">
       <Bill />
       <Tips />
       <NumberOfPeople />
