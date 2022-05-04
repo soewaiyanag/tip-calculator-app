@@ -1,35 +1,54 @@
-import { useRef } from "react";
 import { update } from "./tipsSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CustomTip from "./CustomTip";
-import removeActiveClass from "scripts/removeActiveClass";
+import getInputNumber from "scripts/getInputNumber";
+import clsx from "clsx";
 
 const tips = [5, 10, 15, 25, 50];
 
 const Tips = () => {
-  const tipContainerRef = useRef(null);
   const dispatch = useDispatch();
+  const tipValue = useSelector((state) => state.tips.value);
 
   return (
-    <div className="tips">
-      <label className="tips__label">Select Tip %</label>
-      <div ref={tipContainerRef} className="tips--container">
+    <div className="space-y-2">
+      <label className="text-sm font-semibold text-cyan-dark-2">
+        Select Tip %
+      </label>
+      <div
+        className="grid grid-cols-3 gap-3"
+        onChange={(event) => {
+          const selectedTip = getInputNumber(event);
+          dispatch(update({ value: selectedTip }));
+        }}
+      >
         {tips.map((tip) => {
+          const id = `tip-${tip}`;
           return (
-            <span
-              key={tip}
-              className="tips__tip"
-              onClick={(e) => {
-                dispatch(update({ value: tip }));
-                removeActiveClass(tipContainerRef);
-                e.target.classList.add("active");
-              }}
+            <label
+              key={id}
+              htmlFor={id}
+              className={clsx(
+                "font-semibold transition-colors select-none",
+                "rounded cursor-pointer h-8",
+                "grid place-items-center",
+                tipValue === tip
+                  ? "bg-cyan text-cyan-dark-3"
+                  : "bg-cyan-dark-3 text-cyan-light-1"
+              )}
             >
               {tip}%
-            </span>
+              <input
+                value={tip}
+                className="hidden"
+                type="radio"
+                name="tip-percent"
+                id={id}
+              />
+            </label>
           );
         })}
-        <CustomTip tipContainerRef={tipContainerRef} />
+        <CustomTip />
       </div>
     </div>
   );
