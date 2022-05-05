@@ -4,8 +4,8 @@ const initialState = {
   value: "",
 };
 
-export const tipsSlice = createSlice({
-  name: "tips",
+export const tipPercent = createSlice({
+  name: "tipPercent",
   initialState,
   reducers: {
     update: (state, action) => {
@@ -14,6 +14,6 @@ export const tipsSlice = createSlice({
   },
 });
 
-export const { update } = tipsSlice.actions;
+export const { update } = tipPercent.actions;
 
-export default tipsSlice.reducer;
+export default tipPercent.reducer;

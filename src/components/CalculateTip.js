@@ -1,6 +1,6 @@
 import Bill from "features/bill/Bill";
 import NumberOfPeople from "features/numberOfPeople/NumberOfPeople";
-import Tips from "features/tips/Tips";
+import Tips from "features/tipPercent/TipPercent";
 
 const CalculateTip = () => {
   return (

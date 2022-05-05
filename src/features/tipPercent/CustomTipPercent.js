@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import getInputNumber from "scripts/getInputNumber";
 import onlyInt from "scripts/onlyInt";
-import { update } from "./tipsSlice";
+import { update } from "./tipPercentSlice";
 
 const CustomTip = () => {
   const [customValue, setCustomValue] = useState("");

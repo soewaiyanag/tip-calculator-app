@@ -7,7 +7,7 @@ const Card = () => {
     <div
       className={clsx(
         "grid grid-cols-2 gap-6 p-6 max-w-3xl",
-        "bg-white rounded-lg shadow-lg h-80"
+        "bg-white rounded-lg shadow-lg min-h-[20rem]"
       )}
     >
       <CalculateTip />

@@ -1,11 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import billReducer from "features/bill/billSlice";
-import tipsReducer from "features/tips/tipsSlice";
+import tipsReducer from "features/tipPercent/tipPercentSlice";
 import numberOfPeopleReducer from "features/numberOfPeople/numberOfPeopleSlice";
 
 const rootReducer = combineReducers({
   bill: billReducer,
-  tips: tipsReducer,
+  tipPercent: tipsReducer,
   numberOfPeople: numberOfPeopleReducer,
 });
 

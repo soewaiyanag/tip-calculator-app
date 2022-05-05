@@ -2,27 +2,7 @@ import clsx from "clsx";
 import AppTitle from "components/AppTitle";
 import Attribution from "components/Attribution";
 import Card from "components/Card";
-import React, { useState } from "react";
-
-// const tipAmount = () => {
-//   let _bill = Number(bill);
-//   let _tipValue = Number(tipValue);
-//   let _numberOfPeople = Number(numberOfPeople);
-
-//   let value = (_bill * (_tipValue / 100)) / _numberOfPeople;
-//   value = isNaN(value) || !isFinite(value) ? 0 : value;
-//   return value.toFixed(2);
-// };
-
-// const total = () => {
-//   let _bill = Number(bill);
-//   let _tipValue = Number(tipValue);
-//   let _numberOfPeople = Number(numberOfPeople);
-
-//   let value = (_bill * (_tipValue / 100 + 1)) / _numberOfPeople;
-//   value = isNaN(value) || !isFinite(value) ? 0 : value;
-//   return value.toFixed(2);
-// };
+import React from "react";
 
 const App = () => {
   return (

@@ -1,14 +1,14 @@
-import { update } from "./tipsSlice";
+import { update } from "./tipPercentSlice";
 import { useDispatch, useSelector } from "react-redux";
-import CustomTip from "./CustomTip";
+import CustomTip from "./CustomTipPercent";
 import getInputNumber from "scripts/getInputNumber";
 import clsx from "clsx";
 
-const tips = [5, 10, 15, 25, 50];
+const tipPercents = [5, 10, 15, 25, 50];
 
-const Tips = () => {
+const TipPercent = () => {
   const dispatch = useDispatch();
-  const tipValue = useSelector((state) => state.tips.value);
+  const tipPercentValue = useSelector((state) => state.tipPercent.value);
 
   return (
     <div className="space-y-2">
@@ -20,8 +20,8 @@ const Tips = () => {
           dispatch(update({ value: selectedTip }));
         }}
       >
-        {tips.map((tip) => {
-          const id = `tip-${tip}`;
+        {tipPercents.map((tipPercent) => {
+          const id = `tip-${tipPercent}`;
           return (
             <label
               key={id}
@@ -30,14 +30,14 @@ const Tips = () => {
                 "font-semibold transition-colors duration-100",
                 "rounded cursor-pointer select-none h-8",
                 "grid place-items-center",
-                tipValue === tip
+                tipPercentValue === tipPercent
                   ? "bg-cyan text-cyan-dark-3"
                   : "bg-cyan-dark-3 text-cyan-light-1"
               )}
             >
-              {tip}%
+              {tipPercent}%
               <input
-                value={tip}
+                value={tipPercent}
                 className="hidden"
                 type="radio"
                 name="tip-percent"
@@ -52,4 +52,4 @@ const Tips = () => {
   );
 };
 
-export default Tips;
+export default TipPercent;
