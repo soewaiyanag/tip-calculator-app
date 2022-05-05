@@ -6,7 +6,7 @@ import onlyInt from "scripts/onlyInt";
 import { update } from "./tipsSlice";
 
 const CustomTip = () => {
-  const [customValue, setCustomValue] = useState(0);
+  const [customValue, setCustomValue] = useState("");
   const dispatch = useDispatch();
   const radioRef = useRef(null);
 
@@ -25,7 +25,7 @@ const CustomTip = () => {
           "duration-100 transition-all",
           "bg-cyan-light-1 outline rounded",
           radioRef.current?.checked ? "outline-2" : "outline-0",
-          customValue ? "outline-cyan" : "outline-red-600"
+          customValue !== 0 ? "outline-cyan" : "outline-red-500"
         )}
         placeholder="Custom"
         type="number"

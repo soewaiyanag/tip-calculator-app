@@ -4,11 +4,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import getInputNumber from "scripts/getInputNumber";
 import onlyInt from "scripts/onlyInt";
+import ZeroErrorMessage from "./ZeroErrorMessage";
 
 const InputNumber = ({ name, value, icon, update }) => {
   const [isFocus, setIsFocus] = useState(false);
   const dispatch = useDispatch();
   const id = camelCase(name);
+  const isEqualZero = value === 0;
 
   const onChangeHandler = (event) => {
     const inputNumber = getInputNumber(event);
@@ -17,14 +19,18 @@ const InputNumber = ({ name, value, icon, update }) => {
 
   return (
     <div className="space-y-2">
-      <label className="text-sm font-semibold text-cyan-dark-2" htmlFor={id}>
-        {name}
-      </label>
+      <div className="text-xs font-semibold flex justify-between">
+        <label className="text-cyan-dark-2" htmlFor={id}>
+          {name}
+        </label>
+        <ZeroErrorMessage isEqualZero={isEqualZero} />
+      </div>
       <div
         className={clsx(
-          "relative bg-cyan-light-1 rounded p-3 duration-100",
-          "outline-cyan outline transition-[outline-width]",
-          isFocus ? "outline-2" : "outline-0"
+          "relative bg-cyan-light-1 rounded p-3",
+          "outline transition-all duration-100",
+          isFocus || isEqualZero ? "outline-2" : "outline-0", // still show red outline even focus is out when the value is 0
+          isEqualZero ? "outline-red-500" : "outline-cyan"
         )}
       >
         <img className="w-2.5" src={icon} alt="icon" />
