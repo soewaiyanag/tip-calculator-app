@@ -23,7 +23,12 @@ const Overview = () => {
   const formattedTotalTipAmount = intToString(totalTipAmountValue);
 
   return (
-    <div className="flex flex-col bg-cyan-dark-3 rounded-md p-6">
+    <div
+      className={clsx(
+        "flex flex-col bg-cyan-dark-3 rounded-md p-6",
+        "min-h-[16rem]"
+      )}
+    >
       <div className="space-y-6">
         <OverviewRow label={"Tip Amount"} value={formattedTipAmount} />
         <OverviewRow label={"Total"} value={formattedTotalTipAmount} />

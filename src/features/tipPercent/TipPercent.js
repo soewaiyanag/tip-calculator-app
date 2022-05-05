@@ -12,9 +12,9 @@ const TipPercent = () => {
 
   return (
     <div className="space-y-2">
-      <h1 className="text-sm font-semibold text-cyan-dark-2">Select Tip %</h1>
+      <h1 className="text-xs font-semibold text-cyan-dark-2">Select Tip %</h1>
       <div
-        className="grid grid-cols-3 gap-3"
+        className={clsx("grid grid-cols-2 gap-3", "xs:grid-cols-3")}
         onChange={(event) => {
           const selectedTip = getInputNumber(event);
           dispatch(update({ value: selectedTip }));
