@@ -10,7 +10,7 @@ function App() {
       role="application"
       className="grid min-h-screen place-items-center my-6"
     >
-      <div className="space-y-14 px-4 w-full sm:max-w-2xl">
+      <div className="space-y-14 px-4 w-full max-w-md sm:max-w-3xl">
         <AppTitle />
         <CustomTipProvider>
           <Card />

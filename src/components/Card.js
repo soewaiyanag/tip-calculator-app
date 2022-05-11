@@ -6,8 +6,8 @@ const Card = () => {
   return (
     <div
       className={clsx(
-        "grid gap-6 p-6 max-w-md mx-auto",
-        "bg-white rounded-lg shadow-lg min-h-[20rem]",
+        "grid gap-6 p-6 mx-auto",
+        "bg-white rounded-lg shadow-lg min-h-[24rem]",
         "sm:grid-cols-2 sm:min-w-full"
       )}
     >

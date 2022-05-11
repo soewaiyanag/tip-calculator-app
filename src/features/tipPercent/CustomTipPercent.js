@@ -6,7 +6,7 @@ import onlyInt from "scripts/onlyInt";
 import { update } from "./tipPercentSlice";
 import { CustomTipContext } from "contexts/CustomTipContext";
 
-const CustomTip = () => {
+const CustomTipPercent = () => {
   const dispatch = useDispatch();
   const radioRef = useRef(null);
   const { customValue, setCustomValue } = useContext(CustomTipContext);
@@ -23,7 +23,7 @@ const CustomTip = () => {
         className={clsx(
           "placeholder:font-semibold placeholder:text-cyan-dark-2",
           "absolute inset-0 text-center font-semibold",
-          "duration-100 transition-all",
+          "duration-100 transition-all w-full h-full",
           "bg-cyan-light-1 outline rounded",
           radioRef.current?.checked ? "outline-2" : "outline-0",
           customValue !== 0 ? "outline-cyan" : "outline-red-500"
@@ -49,4 +49,4 @@ const CustomTip = () => {
   );
 };
 
-export default CustomTip;
+export default CustomTipPercent;

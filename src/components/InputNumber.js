@@ -20,7 +20,7 @@ const InputNumber = ({ name, value, icon, update }) => {
   return (
     <div className="space-y-2">
       <div className="text-xs font-semibold flex justify-between">
-        <label className="text-cyan-dark-2" htmlFor={id}>
+        <label className="text-cyan-dark-2 text-sm" htmlFor={id}>
           {name}
         </label>
         <ZeroErrorMessage isEqualZero={isEqualZero} />
@@ -38,7 +38,8 @@ const InputNumber = ({ name, value, icon, update }) => {
           className={clsx(
             "absolute inset-0 bg-transparent text-right px-2",
             "placeholder:font-bold outline-none",
-            "font-bold text-xl text-cyan-dark-3"
+            "font-bold text-xl text-cyan-dark-3",
+            "h-full w-full"
           )}
           placeholder="0"
           type="number"
