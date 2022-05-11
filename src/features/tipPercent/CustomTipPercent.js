@@ -1,14 +1,15 @@
 import clsx from "clsx";
-import { useState, useRef } from "react";
+import { useRef, useContext } from "react";
 import { useDispatch } from "react-redux";
 import getInputNumber from "scripts/getInputNumber";
 import onlyInt from "scripts/onlyInt";
 import { update } from "./tipPercentSlice";
+import { CustomTipContext } from "contexts/CustomTipContext";
 
 const CustomTip = () => {
-  const [customValue, setCustomValue] = useState("");
   const dispatch = useDispatch();
   const radioRef = useRef(null);
+  const { customValue, setCustomValue } = useContext(CustomTipContext);
 
   const onChangeHandler = (event) => {
     const value = getInputNumber(event);

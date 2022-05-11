@@ -5,6 +5,7 @@ import OverviewRow from "./OverviewRow";
 import tipAmount from "scripts/tipAmount";
 import totalTipAmount from "scripts/totalTipAmount";
 import intToString from "scripts/intToString";
+import ResetBtn from "./ResetBtn";
 
 const Overview = () => {
   const state = useSelector((state) => state);
@@ -33,15 +34,7 @@ const Overview = () => {
         <OverviewRow label={"Tip Amount"} value={formattedTipAmount} />
         <OverviewRow label={"Total"} value={formattedTotalTipAmount} />
       </div>
-      <button
-        className={clsx(
-          "w-full transition-colors bg-cyan",
-          "font-semibold text-cyan-dark-3 rounded",
-          "p-2 mt-auto hover:bg-cyan-light-2"
-        )}
-      >
-        RESET
-      </button>
+      <ResetBtn />
     </div>
   );
 };
