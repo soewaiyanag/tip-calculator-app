@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { useRef, useContext } from "react";
 import { useDispatch } from "react-redux";
 import getInputNumber from "scripts/getInputNumber";
-import onlyInt from "scripts/onlyInt";
 import { update } from "./tipPercentSlice";
 import { CustomTipContext } from "contexts/CustomTipContext";
 
@@ -31,7 +30,6 @@ const CustomTipPercent = () => {
         placeholder="Custom"
         type="number"
         value={customValue || ""}
-        onKeyDown={onlyInt}
         onChange={onChangeHandler}
         onClick={() => {
           radioRef.current.click();

@@ -3,7 +3,6 @@ import camelCase from "lodash.camelcase";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import getInputNumber from "scripts/getInputNumber";
-import onlyInt from "scripts/onlyInt";
 import ZeroErrorMessage from "./ZeroErrorMessage";
 
 const InputNumber = ({ name, value, icon, update }) => {
@@ -27,8 +26,9 @@ const InputNumber = ({ name, value, icon, update }) => {
       </div>
       <div
         className={clsx(
-          "relative bg-cyan-light-1 rounded p-3",
+          "relative bg-cyan-light-1 rounded h-9",
           "outline transition-all duration-100",
+          "flex items-center px-2",
           isFocus || isEqualZero ? "outline-2" : "outline-0", // still show red outline even focus is out when the value is 0
           isEqualZero ? "outline-red-500" : "outline-cyan"
         )}
@@ -36,17 +36,17 @@ const InputNumber = ({ name, value, icon, update }) => {
         <img className="w-2.5" src={icon} alt="icon" />
         <input
           className={clsx(
-            "absolute inset-0 bg-transparent text-right px-2",
+            "absolute inset-0 bg-transparent text-right",
             "placeholder:font-bold outline-none",
             "font-bold text-xl text-cyan-dark-3",
-            "h-full w-full"
+            "h-full w-full px-2"
           )}
           placeholder="0"
           type="number"
+          pattern="^[0-9]"
           name={name}
           id={id}
           value={value || ""} // if value is 0, just show placeholder
-          onKeyDown={onlyInt}
           onChange={onChangeHandler}
           onFocus={() => {
             setIsFocus(true);

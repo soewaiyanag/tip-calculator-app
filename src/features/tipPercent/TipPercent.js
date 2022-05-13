@@ -1,6 +1,6 @@
 import { update } from "./tipPercentSlice";
 import { useDispatch, useSelector } from "react-redux";
-import CustomTip from "./CustomTipPercent";
+import CustomTipPercent from "./CustomTipPercent";
 import getInputNumber from "scripts/getInputNumber";
 import clsx from "clsx";
 
@@ -46,7 +46,7 @@ const TipPercent = () => {
             </label>
           );
         })}
-        <CustomTip />
+        <CustomTipPercent />
       </div>
     </div>
   );
